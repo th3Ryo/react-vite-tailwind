@@ -1,6 +1,10 @@
 import React from "react";
+import { useContext  } from "react";
+import {StoreContext} from "../../../Context"
 
 function Card({ title, description, price, category, image }) {
+  const context = useContext (StoreContext)
+
   return (
     <div className="container bg-gradient-to-l from-red-800 to-orange-400 w-54 h-68 p-1 rounded-md overflow-visible flex items-center relative text-white text-center">
       <div className="box relative w-52 h-64 bg-gray-900 flex justify-center items-center rounded-lg">
@@ -14,9 +18,12 @@ function Card({ title, description, price, category, image }) {
               src= {image}
               alt= {description}
             />
-            <div className="absolute top-0 right-0 flex justify-center items-center text-center bg-gradient-to-l from-red-800 to-orange-400 w-6 h-6 rounded-full m-2 p-1">
+            <button 
+              className="absolute top-0 right-0 flex justify-center items-center text-center bg-gradient-to-l from-red-800 to-orange-400 w-6 h-6 rounded-full m-2 p-1 cursor-pointer"
+              onClick={() => context.setCount(context.count +1)}
+            >
               +
-            </div>
+            </button>
           </figure>
           <p className="flex justify-between w-full h-1/5 items-center">
             <span className="text-xs font-light truncate mr-2">{title}</span>

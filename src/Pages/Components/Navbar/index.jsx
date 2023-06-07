@@ -1,28 +1,18 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import { StoreContext } from '../../../Context'
+
+import { navData } from "./navData"
 import { NavItem } from "./NavItem"
 import { NavLink } from "react-router-dom"
 
 
 const Navbar = () => {
-
-    const navItems = [
-        /* { name: 'Shopi', to: '/', className: 'font-semibold text-xl' }, */
-        { name: 'All', to: '/' },
-        { name: 'Electronics', to: '/electronics' },
-        { name: 'Jewelery', to: '/jewelery' },
-        { name: "men's clothing", to: '/mens-clothing' },
-        { name: "women's clothing", to: '/womens-clothing' },
-        
-      ]
-
-      const pages = [
-        { name:  "My Orders" ,to: "/my-orders" },
-        { name: "My Account", to: "/my-account" },
-        { name: "Sign In", to: "/sign-in" },
-      ];
+    const activeStyle = 'underline underline-offset-4'
+    const data = navData()
 
 
-      const activeStyle = 'underline'
+      
+
 
       return (
         <nav className='flex justify-between items-center fixed z-10 top-0 w-full py-5 px-8 text-sm font-light'>
@@ -31,7 +21,7 @@ const Navbar = () => {
                 <NavLink to="/">Shopi</NavLink>
             </li>
             {   
-              navItems.map(({ to, className, name }) => (
+              data.navItems.map(({ to, className, name }) => (
                 <NavItem
                   key={name}
                   to={to}
@@ -46,7 +36,7 @@ const Navbar = () => {
             <li className="text-black/60">Ryo@fake.com</li>
 
             {
-              pages.map(({ to, className, name }) => (
+              data.pages.map(({ to, className, name }) => (
                 <NavItem
                   key={name}
                   to={to}
