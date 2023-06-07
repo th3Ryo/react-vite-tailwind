@@ -10,7 +10,9 @@ function indes() {
 }
 
 export const storeProvider = ({children}) => {
-    <storeContext.Provider>
-        {children}
-    </storeContext.Provider>
+    return (
+        <storeContext.Provider>
+            {children}
+        </storeContext.Provider>
+    )
 }
