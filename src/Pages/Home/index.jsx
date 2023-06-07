@@ -1,9 +1,12 @@
 import React from 'react'
+import {Card} from '../Components/Card'
 
-function Home() {
+
+const Home = () => {
   return (
     <div>
         home
+        <Card />
     </div>
   )
 }
