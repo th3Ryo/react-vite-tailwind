@@ -8,11 +8,11 @@ const Navbar = () => {
     const navItems = [
         /* { name: 'Shopi', to: '/', className: 'font-semibold text-xl' }, */
         { name: 'All', to: '/' },
-        { name: 'Clothes', to: '/clothes' },
         { name: 'Electronics', to: '/electronics' },
-        { name: 'Furnitures', to: '/furnitures' },
-        { name: 'Toys', to: '/toys' },
-        { name: 'Others', to: '/others' }
+        { name: 'Jewelery', to: '/jewelery' },
+        { name: "men's clothing", to: '/mens-clothing' },
+        { name: "women's clothing", to: '/womens-clothing' },
+        
       ]
 
       const pages = [
