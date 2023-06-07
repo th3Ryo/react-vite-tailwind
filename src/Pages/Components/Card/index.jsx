@@ -1,9 +1,9 @@
 import React from "react";
-import { useContext  } from "react";
-import {StoreContext} from "../../../Context"
+import { useContext } from "react";
+import { StoreContext } from "../../../Context";
 
 function Card({ title, description, price, category, image }) {
-  const context = useContext (StoreContext)
+  const context = useContext(StoreContext);
 
   return (
     <div className="container bg-gradient-to-l from-red-800 to-orange-400 w-54 h-68 p-1 rounded-md overflow-visible flex items-center relative text-white text-center">
@@ -13,16 +13,27 @@ function Card({ title, description, price, category, image }) {
             <span className="absolute bottom-0 left-0 bg-gradient-to-l from-red-800 to-orange-400 rounded-lg text-xs font-light m-2 px-2 py-0.5">
               {category}
             </span>
-            <img 
-              className="w-full h-full object-cover rounded-lg" 
-              src= {image}
-              alt= {description}
+            <img
+              className="w-full h-full object-cover rounded-lg"
+              src={image}
+              alt={description}
             />
-            <button 
+            <button
               className="absolute top-0 right-0 flex justify-center items-center text-center bg-gradient-to-l from-red-800 to-orange-400 w-6 h-6 rounded-full m-2 p-1 cursor-pointer"
-              onClick={() => context.setCount(context.count +1)}
+              onClick={() => context.setCount(context.count + 1)}
             >
-              +
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                viewBox="0 0 24 24"
+                fill="currentColor"
+                className="w-6 h-6 transform rotate-45"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M5.47 5.47a.75.75 0 011.06 0L12 10.94l5.47-5.47a.75.75 0 111.06 1.06L13.06 12l5.47 5.47a.75.75 0 11-1.06 1.06L12 13.06l-5.47 5.47a.75.75 0 01-1.06-1.06L10.94 12 5.47 6.53a.75.75 0 010-1.06z"
+                  clipRule="evenodd"
+                />
+              </svg>
             </button>
           </figure>
           <p className="flex justify-between w-full h-1/5 items-center">
@@ -36,4 +47,3 @@ function Card({ title, description, price, category, image }) {
 }
 
 export { Card };
-

@@ -9,6 +9,7 @@ import {SignIn} from "../SignIn"
 import {NotFound} from "../NotFound"
 import {Navbar} from "../Components/Navbar"
 import {Layout} from '../Components/Layout'
+import {ProductDetail} from '../Components/ProductDetail'
 
 
 import './App.css'
@@ -35,6 +36,7 @@ const App = () => {
       <Layout>
         <Navbar />
         <AppRoutes />
+        <ProductDetail />
       </Layout>
     </BrowserRouter>
   </StoreProvider>
