@@ -5,29 +5,34 @@ import { StoreContext } from "../../../Context";
 function Card({ title, description, price, category, image }) {
   const context = useContext(StoreContext);
 
-    const handleCardClick = (productDetail) => {
-    // Verificar si el evento target es el botón dentro de la tarjeta
-    if (productDetail.target.tagName.toLowerCase() !== "button") {
-      // Abrir el componente ProductDetail
-      context.openDetail();
-      context.setDetailData({
-        title: title,
-        description: description,
-        price: price,
-        category: category,
-        image: image,
-      });
+  const newItem = {
+    title: title,
+    description: description,
+    price: price,
+    category: category,
+    image: image,
+  };
 
-    }
+  const handleCardClick = (productDetail) => {
+    context.openDetail();
+    context.setDetailData(newItem);
+    
+  };
+
+  const handleButtonClick = (event) => {
+    event.stopPropagation(); // Detener la propagación del evento
+    // Realizar acciones adicionales al hacer clic en el botón
+    context.setCount(context.count + 1);
+    // actualizar estado de add to cart
+    context.setAddToCart([...context.addToCart, newItem]);
   };
 
   return (
-    <div 
+    <div
       className="container bg-gradient-to-l from-red-800 to-orange-400 w-54 h-68 p-1 rounded-md overflow-visible flex items-center relative text-white text-center"
       // se remplazo la arrow function por el context.openDetail() por la costante handleCardClick
       onClick={handleCardClick}
     >
-      
       <div className="box relative w-52 h-64 bg-gray-900 flex justify-center items-center rounded-lg">
         <div className="content flex flex-col justify-center items-center gap-0 px-5 w-full h-full overflow-hidden">
           <figure className="relative mb-2 w-full h-4/5 flex justify-center items-center">
@@ -41,8 +46,7 @@ function Card({ title, description, price, category, image }) {
             />
             <button
               className="absolute top-0 right-0 flex justify-center items-center text-center bg-gradient-to-l from-red-800 to-orange-400 w-6 h-6 rounded-full m-2 p-1 cursor-pointer"
-              onClick={() => {context.setCount(context.count + 1)}}
-              
+              onClick={handleButtonClick}
             >
               <svg
                 xmlns="http://www.w3.org/2000/svg"

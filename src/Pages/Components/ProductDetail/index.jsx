@@ -34,13 +34,14 @@ const ProductDetail = () => {
       {/* Mostrar los valores de context.detailData */}
       {context.detailData && (
         <figure className="px-6  flex-col">
-          <div className="flex justify-center">
+          <div className="flex justify-center bg-white rounded-lg">
             <img
-              className="product-detail rounded-lg  object-contain"
+              className="product-img rounded-lg  object-contain"
               src={context.detailData.image}
               alt={context.detailData.description}
             />
           </div>
+          <div className="flex flex-col p-3 space-y-1">
           <p className="flex flex-col p-3">
             <span className="font-medium text-2xl">
               ${context.detailData.price}
@@ -48,11 +49,12 @@ const ProductDetail = () => {
             <span className="font-medium text-md">
               {context.detailData.title}
             </span>
-            <span className="font-medium text-xs">
+            <span className="font-medium text-xs product-detail overflow-y-auto">
               {context.detailData.description}
             </span>
             <span className="">{context.detailData.category}</span>
           </p>
+          </div>
         </figure>
       )}
     </aside>

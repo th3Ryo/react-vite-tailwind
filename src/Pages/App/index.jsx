@@ -12,7 +12,6 @@ import {Layout} from '../Components/Layout'
 import {ProductDetail} from '../Components/ProductDetail'
 
 
-import './App.css'
 
 const AppRoutes = () => {
   //se crea una variable para el routes con un objeto con arrays

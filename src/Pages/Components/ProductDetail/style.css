@@ -1,3 +1,7 @@
-.product-detail {
+.product-img {
     height: 40vh;
+}
+
+.product-detail {
+    max-height: 25vh;
 }
