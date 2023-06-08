@@ -16,7 +16,7 @@ function Card({ title, description, price, category, image }) {
   const handleCardClick = (productDetail) => {
     context.openDetail();
     context.setDetailData(newItem);
-    
+    context.closeCart();
   };
 
   const handleButtonClick = (event) => {
@@ -25,6 +25,13 @@ function Card({ title, description, price, category, image }) {
     context.setCount(context.count + 1);
     // actualizar estado de add to cart
     context.setAddToCart([...context.addToCart, newItem]);
+    // abrir el add to cart
+    context.closeDetail();
+    context.openCart();
+    context.setShowNotification(true); // Agregar esta línea para activar la notificación
+    setTimeout(() => {
+      context.setShowNotification(false); // Ocultar la notificación después de 3 segundos
+    }, 3000);
   };
 
   return (

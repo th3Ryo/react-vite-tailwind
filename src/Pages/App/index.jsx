@@ -10,6 +10,8 @@ import {NotFound} from "../NotFound"
 import {Navbar} from "../Components/Navbar"
 import {Layout} from '../Components/Layout'
 import {ProductDetail} from '../Components/ProductDetail'
+import {CartDetail} from '../Components/CartDetail'
+import {Notification} from "../Components/Notification"
 
 
 
@@ -38,6 +40,8 @@ const App = () => {
         {/* aki es la otra forma es como la expuesta en este comentario
         {showProductDetail && <ProductDetail />} */}
         <ProductDetail />
+        <CartDetail />
+        <Notification />
       </Layout>
     </BrowserRouter>
   </StoreProvider>
