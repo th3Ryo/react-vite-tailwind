@@ -36,6 +36,8 @@ const App = () => {
       <Layout>
         <Navbar />
         <AppRoutes />
+        {/* otra forma es como la expuesta en este comentario
+        {showProductDetail && <ProductDetail />} */}
         <ProductDetail />
       </Layout>
     </BrowserRouter>

@@ -17,7 +17,8 @@ const ProductDetail = () => {
     >
       <div className="flex justify-between items-center p-6">
         <h2 className="font-medium text-xl">details</h2>
-        <button>
+        <button 
+          onClick={() => context.closeDetail()}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
