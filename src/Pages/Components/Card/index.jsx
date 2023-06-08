@@ -24,10 +24,7 @@ function Card({ title, description, price, category, image }) {
             />
             <button
               className="absolute top-0 right-0 flex justify-center items-center text-center bg-gradient-to-l from-red-800 to-orange-400 w-6 h-6 rounded-full m-2 p-1 cursor-pointer"
-              onClick={() => {
-                context.setCount(context.count + 1)
-                context.openDetail()
-              }}
+              onClick={() => {context.setCount(context.count + 1)}}
               
             >
               <svg
