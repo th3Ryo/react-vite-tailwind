@@ -1,10 +1,20 @@
 import React from "react";
+import { useContext } from "react";
+import { StoreContext } from "../../../Context";
+
+
 import "./style.css";
 
 const ProductDetail = () => {
+  const context = useContext(StoreContext);
+
   return (
     //se podria importar una clase product-detail para este caso se utilizara w-[360px] "h-[calc(100vh-80px)]" // Arbitrary values
-    <aside className="flex flex-col fixed right-0 border border-black rounded-lg bg-white w-[360px] h-[calc(80vh-80px)]">
+    <aside
+      className={`${
+        context.isDetailOpen ? 'flex' : 'hidden'
+      } flex-col fixed right-0 border border-black rounded-lg bg-white w-[360px] h-[calc(80vh-80px)]`}
+    >
       <div className="flex justify-between items-center p-6">
         <h2 className="font-medium text-xl">details</h2>
         <button>

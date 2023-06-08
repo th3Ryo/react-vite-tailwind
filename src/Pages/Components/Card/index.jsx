@@ -6,7 +6,11 @@ function Card({ title, description, price, category, image }) {
   const context = useContext(StoreContext);
 
   return (
-    <div className="container bg-gradient-to-l from-red-800 to-orange-400 w-54 h-68 p-1 rounded-md overflow-visible flex items-center relative text-white text-center">
+    <div 
+      className="container bg-gradient-to-l from-red-800 to-orange-400 w-54 h-68 p-1 rounded-md overflow-visible flex items-center relative text-white text-center"
+      onClick={() => context.openDetail()}
+    >
+      
       <div className="box relative w-52 h-64 bg-gray-900 flex justify-center items-center rounded-lg">
         <div className="content flex flex-col justify-center items-center gap-0 px-5 w-full h-full overflow-hidden">
           <figure className="relative mb-2 w-full h-4/5 flex justify-center items-center">
