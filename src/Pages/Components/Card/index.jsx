@@ -5,10 +5,27 @@ import { StoreContext } from "../../../Context";
 function Card({ title, description, price, category, image }) {
   const context = useContext(StoreContext);
 
+    const handleCardClick = (productDetail) => {
+    // Verificar si el evento target es el botón dentro de la tarjeta
+    if (productDetail.target.tagName.toLowerCase() !== "button") {
+      // Abrir el componente ProductDetail
+      context.openDetail();
+      context.setDetailData({
+        title: title,
+        description: description,
+        price: price,
+        category: category,
+        image: image,
+      });
+
+    }
+  };
+
   return (
     <div 
       className="container bg-gradient-to-l from-red-800 to-orange-400 w-54 h-68 p-1 rounded-md overflow-visible flex items-center relative text-white text-center"
-      onClick={() => context.openDetail()}
+      // se remplazo la arrow function por el context.openDetail() por la costante handleCardClick
+      onClick={handleCardClick}
     >
       
       <div className="box relative w-52 h-64 bg-gray-900 flex justify-center items-center rounded-lg">

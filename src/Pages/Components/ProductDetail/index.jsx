@@ -2,7 +2,6 @@ import React from "react";
 import { useContext } from "react";
 import { StoreContext } from "../../../Context";
 
-
 import "./style.css";
 
 const ProductDetail = () => {
@@ -12,13 +11,12 @@ const ProductDetail = () => {
     //se podria importar una clase product-detail para este caso se utilizara w-[360px] "h-[calc(100vh-80px)]" // Arbitrary values
     <aside
       className={`${
-        context.isDetailOpen ? 'flex' : 'hidden'
-      } flex-col fixed right-0 border border-black rounded-lg bg-white w-[360px] h-[calc(80vh-80px)]`}
+        context.isDetailOpen ? "flex" : "hidden"
+      } flex-col fixed top-[68px] right-0 bg-gradient-to-l from-red-800 to-orange-400 rounded-lg bg-white w-[360px] h-[calc(100vh-82px)]`}
     >
-      <div className="flex justify-between items-center p-6">
+      <div className="flex justify-between items-center p-3  w-[356px] h-[calc(100vh-78px)">
         <h2 className="font-medium text-xl">details</h2>
-        <button 
-          onClick={() => context.closeDetail()}>
+        <button onClick={() => context.closeDetail()}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 24 24"
@@ -33,6 +31,30 @@ const ProductDetail = () => {
           </svg>
         </button>
       </div>
+      {/* Mostrar los valores de context.detailData */}
+      {context.detailData && (
+        <figure className="px-6  flex-col">
+          <div className="flex justify-center">
+            <img
+              className="product-detail rounded-lg  object-contain"
+              src={context.detailData.image}
+              alt={context.detailData.description}
+            />
+          </div>
+          <p className="flex flex-col p-3">
+            <span className="font-medium text-2xl">
+              ${context.detailData.price}
+            </span>
+            <span className="font-medium text-md">
+              {context.detailData.title}
+            </span>
+            <span className="font-medium text-xs">
+              {context.detailData.description}
+            </span>
+            <span className="">{context.detailData.category}</span>
+          </p>
+        </figure>
+      )}
     </aside>
   );
 };
