@@ -12,7 +12,7 @@ const ProductDetail = () => {
     <aside
       className={`${
         context.isDetailOpen ? "flex" : "hidden"
-      } flex-col fixed top-[68px] right-0 bg-gradient-to-l from-red-800 to-orange-400 rounded-lg bg-white w-[360px] h-[calc(100vh-82px)]`}
+      } flex-col fixed top-[68px] right-0 bg-gradient-to-l from-red-800 to-orange-400 rounded-lg bg-white w-[360px] h-[calc(80vh-82px)]`}
     >
       <div className="flex justify-between items-center p-3  w-[356px] h-[calc(100vh-78px)">
         <h2 className="font-medium text-xl">details</h2>
@@ -46,10 +46,10 @@ const ProductDetail = () => {
             <span className="font-medium text-2xl">
               ${context.detailData.price}
             </span>
-            <span className="font-medium text-md">
+            <span className="font-medium text-md text-white">
               {context.detailData.title}
             </span>
-            <span className="font-medium text-xs product-detail overflow-y-auto">
+            <span className="font-medium text-md product-detail line-clamp-6">
               {context.detailData.description}
             </span>
             <span className="">{context.detailData.category}</span>
