@@ -10,17 +10,22 @@ function CartDetail() {
   /* console.log("CART: ", context.addToCart); 
   const dataAllPages = {...context.detailData}
   console.log("detail: ", context.detailData); */
-
- 
+  //mas eficiente para eliminar que modificar el array
+  const deleteItemFromCart = (id) => {
+    const filteredProducts = context.addToCart.filter(product => product.id != id)
+    context.setAddToCart(filteredProducts)
+  };
+  
+  
 
   return (
     //se podria importar una clase product-detail para este caso se utilizara w-[360px] "h-[calc(100vh-80px)]" // Arbitrary values
     <aside
       className={`${
         context.isCartOpen ? "flex" : "hidden"
-      } flex-col fixed top-[68px] right-0 bg-white w-[420px] h-[calc(100vh-82px)] items-center rounded-lg border overflow-y-auto border-black`}
+      } flex-col fixed top-[68px] right-0 bg-white w-[360px] h-[calc(60vh-82px)] items-center rounded-lg border overflow-y-scroll overflow-x-hidden border-black`}
     >
-      <div className="flex justify-between items-center p-3 w-[356px] h-[68px]">
+      <div className="flex justify-between items-center p-6 w-[350px] h-[68px]">
 
         <h2 className="font-medium text-xl">My Order</h2>
         <button onClick={() => context.closeCart()}>
@@ -49,7 +54,7 @@ function CartDetail() {
             category={item.category}
             image={item.image}
             quantity={item.quantity}
-      
+            deleteItemFromCart={deleteItemFromCart}
           > 
             {/* console de verificacion {console.log("addToCart ",context.addToCart)} */}
             </MyOrderCard>

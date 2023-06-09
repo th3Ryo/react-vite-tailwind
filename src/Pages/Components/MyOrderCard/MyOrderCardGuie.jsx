@@ -4,10 +4,10 @@ function MyOrderCardGuie() {
   return (
     <div className="flex flex-row justify-between items-center w-full rounded-lg">
       <figure className="flex items-center gap-2 rounded-lg ">
-        <div className="flex items-center justify-center rounded-lg w-[271px]">
-          <spam className=" w-14 h-4 rounded-lg object-cover text-center font-medium text-lg">
+        <div className="flex items-center justify-center rounded-lg w-[240px]">
+          <span className=" w-14 h-4 rounded-lg object-cover text-center font-medium text-lg">
             Img
-          </spam>
+          </span>
           <span className="w-[221px] text-center font-medium text-lg">Title</span>
         </div>
       </figure>

@@ -18,7 +18,7 @@ const navData = () => {
         { name:  "My Orders" ,to: "/my-orders" },
         { name: "My Account", to: "/my-account" },
         { name: "Sign In", to: "/sign-in" },
-        { name: `🛒${context.count}`, to: "/cart" },
+        { name: `🛒${context.addToCart.length }`, to: "/cart" },
       ];
       return {
         navItems,

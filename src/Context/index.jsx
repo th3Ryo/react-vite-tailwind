@@ -7,14 +7,13 @@ export const StoreContext = createContext({});
 //shoppint cart
 export const StoreProvider = ({ children }) => {
   //shoppint cart - contador  
-  const [count, setCount] = useState(0); // Estado para contar los elementos del carrito
   //detail card - open close  
   const openDetail = (data) => setIsDetailOpen(true);
   const closeDetail  = () => setIsDetailOpen(false);
   const toggleDetail = () =>  {
     setIsDetailOpen(!isDetailOpen)
   }
-  
+  //notificacion de adicion
   const [showNotification, setShowNotification] = useState(false); // Agregar el estado para controlar la notificación
   useEffect(() => {
     // Mostrar la notificación cuando showNotification es true
@@ -24,8 +23,21 @@ export const StoreProvider = ({ children }) => {
       }, 1000);
     }
   }, [showNotification]);
-  
-  
+
+
+  //shoppint cart - total final
+  /**
+   * ! pendiente de verificar mas sencillo
+   *  const [totalPrice, setTotalPrice] = useState(0);
+  useEffect(() => {
+    // Calcula el precio total
+    const total = context.addToCart.reduce((accumulator, item) => {
+      return accumulator + (item.price * item.quantity);
+    }, 0);
+    
+    // Actualiza el precio total
+    setTotalPrice(total);
+  }, [context.addToCart]); */
   
   //shoppint cart - add Product to cart
   const [addToCart, setAddToCart] = useState([]); // Estado para mostrar el detail el false es para que por defecto este vacio
@@ -41,8 +53,6 @@ export const StoreProvider = ({ children }) => {
   const [isDetailOpen, setIsDetailOpen] = useState(false); // Estado para mostrar el detail el false es para que por defecto este vacio
   
   return <StoreContext.Provider value={{
-    count,
-    setCount,
     isDetailOpen,
     openDetail,
     closeDetail,
@@ -55,6 +65,7 @@ export const StoreProvider = ({ children }) => {
     closeCart,
     showNotification,
     setShowNotification,
+    /* totalPrice, */
   }}>
     {children}
   </StoreContext.Provider>;

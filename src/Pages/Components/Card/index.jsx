@@ -24,7 +24,6 @@ function Card({ID, title, description, price, category, image }) {
   const handleButtonClick = (event) => {
     event.stopPropagation(); // Detener la propagación del evento
     // Realizar acciones adicionales al hacer clic en el botón
-    context.setCount(context.count + 1);
     /* valor que sirve para almacenar datos y usarlo en cartDetail o cualquier otra*/
     context.setDetailData(newItem); 
 
@@ -101,7 +100,7 @@ function Card({ID, title, description, price, category, image }) {
             </button>
           </figure>
           <p className="flex justify-between w-full h-1/5 items-center">
-            <span className="text-xs font-light truncate mr-2">{title}</span>
+            <span className="text-xs font-light mr-2 line-clamp-2">{title}</span>
             <span className="text-lg">${price}</span>
           </p>
         </div>

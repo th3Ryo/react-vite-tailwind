@@ -1,35 +1,39 @@
 import React from "react";
 
-const MyOrderCard = props => {
-  const {title, description, price, image, quantity } = props;
-  
+const MyOrderCard = (props) => {
+  const { id, title, description, price, image, quantity, deleteItemFromCart } =
+    props;
+
   return (
     <div className="flex flex-row justify-between items-center w-full rounded-lg gap-2 py-4">
-      <figure className="flex items-center gap-2 rounded-lg ">
-        <div className="flex items-center justify-center rounded-lg w-[271px]">
+      <figure className="flex items-center gap-2 rounded-lg">
+        <div className="relative flex items-center justify-center rounded-lg w-[220px]">
+          <span className="absolute top-0 left-3 w-4 h-4 z-10 font-light text-sm text-white text-center bg-gradient-to-l from-red-800 to-orange-400 rounded-full" >
+            {quantity}
+          </span>
           <img
-            className=" w-14 max-h-20 rounded-lg object-cover"
+            className="relative w-10 max-h-20 rounded-lg object-cover"
             src={image}
             alt={description}
           />
-          <span className="font-light text-sm w-[221px] px-3">{title}</span>
+          {/* line-clamp-1 permite limitar las lineas que se muestran para el codigo es 3 tambien se puede con truncate*/}
+          <span className="font-light text-sm w-[160px] px-3 line-clamp-3">{title}</span>
         </div>
       </figure>
-      <div className="flex items-center gap-2 w-[140px]">
+
+      <div className="flex items-center gap-2 w-[100px]">
         <p className="flex flex-col justify-between">
-          <span className="font-medium text-lg w-[68px]">
-            ${price}
-          </span>
-          <span className="font-medium bold text-lg">
+          <span className="font-medium text-base w-[60px]">${price}</span>
+          <span className="font-medium bold text-base">
             ${price * quantity}
           </span>
         </p>
-        <button>
+        <button className="w-[20px]" onClick={() => deleteItemFromCart(id)}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 24 24"
+            viewBox="0 0 20 20"
             fill="currentColor"
-            className="w-6 h-6"
+            className="w-4 h-4"
           >
             <path
               fillRule="evenodd"
