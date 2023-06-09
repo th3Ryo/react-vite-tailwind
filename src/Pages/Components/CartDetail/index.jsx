@@ -1,21 +1,27 @@
 import React from "react";
 import { useContext } from "react";
 import { StoreContext } from "../../../Context";
-
+import { MyOrderCard } from "../MyOrderCard";
+import { MyOrderCardGuie } from "../MyOrderCard/MyOrderCardGuie";
 /* import "./style.css"; */
-
 
 function CartDetail() {
   const context = useContext(StoreContext);
+  /* console.log("CART: ", context.addToCart); 
+  const dataAllPages = {...context.detailData}
+  console.log("detail: ", context.detailData); */
+
+ 
 
   return (
     //se podria importar una clase product-detail para este caso se utilizara w-[360px] "h-[calc(100vh-80px)]" // Arbitrary values
     <aside
       className={`${
         context.isCartOpen ? "flex" : "hidden"
-      } flex-col fixed top-[68px] right-0 bg-white w-[360px] h-[calc(60vh-82px)] `}
+      } flex-col fixed top-[68px] right-0 bg-white w-[420px] h-[calc(100vh-82px)] items-center rounded-lg border overflow-y-auto border-black`}
     >
-      <div className="flex justify-between items-center p-3  w-[356px] h-[calc(100vh-78px)">
+      <div className="flex justify-between items-center p-3 w-[356px] h-[68px]">
+
         <h2 className="font-medium text-xl">My Order</h2>
         <button onClick={() => context.closeCart()}>
           <svg
@@ -32,9 +38,25 @@ function CartDetail() {
           </svg>
         </button>
       </div>
+      <MyOrderCardGuie />
+      {context.addToCart?.map((item) => (
+          <MyOrderCard
+            key={item.id}
+            id={item.id}
+            title={item.title}
+            description={item.description}
+            price={item.price}
+            category={item.category}
+            image={item.image}
+            quantity={item.quantity}
       
+          > 
+            {/* console de verificacion {console.log("addToCart ",context.addToCart)} */}
+            </MyOrderCard>
+        ))
+      }
     </aside>
   );
 }
 
-export {CartDetail}
+export { CartDetail };

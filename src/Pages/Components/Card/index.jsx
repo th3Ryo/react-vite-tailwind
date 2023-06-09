@@ -2,15 +2,17 @@ import React from "react";
 import { useContext } from "react";
 import { StoreContext } from "../../../Context";
 
-function Card({ title, description, price, category, image }) {
+function Card({ID, title, description, price, category, image }) {
   const context = useContext(StoreContext);
 
   const newItem = {
+    id: ID,
     title: title,
     description: description,
     price: price,
     category: category,
     image: image,
+    quantity: 1,
   };
 
   const handleCardClick = (productDetail) => {
@@ -23,8 +25,37 @@ function Card({ title, description, price, category, image }) {
     event.stopPropagation(); // Detener la propagación del evento
     // Realizar acciones adicionales al hacer clic en el botón
     context.setCount(context.count + 1);
+    /* valor que sirve para almacenar datos y usarlo en cartDetail o cualquier otra*/
+    context.setDetailData(newItem); 
+
+
     // actualizar estado de add to cart
-    context.setAddToCart([...context.addToCart, newItem]);
+    /* context.setAddToCart([...context.addToCart, newItem]); */
+    // Verificar si el producto ya existe en el carrito
+    
+    const existingItemIndex = context.addToCart.findIndex(
+      (item) => item.id === newItem.id
+    );
+      /* console.log("item.id ", item.id);
+      console.log("newItem.id ", newItem.id); 
+      console.log("existingItemIndex ", existingItemIndex);*/
+    if (existingItemIndex !== -1) {
+      // El producto ya existe en el carrito, incrementa la cantidad en 1
+      const updatedCart = [...context.addToCart];
+      /* console.log("updatedCart ", updatedCart); */
+      updatedCart[existingItemIndex].quantity += 1;
+      context.setAddToCart(updatedCart);
+    } else {
+      // El producto no existe en el carrito, agrégalo con cantidad 1
+      context.setAddToCart([...context.addToCart, newItem]);
+    }
+
+    
+    
+    
+    
+
+
     // abrir el add to cart
     context.closeDetail();
     context.openCart();

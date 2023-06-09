@@ -21,6 +21,7 @@ const Home = () => {
           {items?.map(item => (    
           <Card 
             key={item.id}
+            ID={item.id}
             title={item.title}
             description={item.description}
             price={item.price}

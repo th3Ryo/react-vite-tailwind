@@ -1,20 +1,9 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext } from 'react';
 import { StoreContext } from '../../../Context';
 
 function Notification() {
-  const { openNotification, showNotification, setShowNotification } = useContext(StoreContext);
+  const { showNotification } = useContext(StoreContext);
 
-  useEffect(() => {
-    // Mostrar la notificación cuando openNotification es true
-    if (openNotification) {
-      setShowNotification(true);
-
-      // Ocultar la notificación después de 3 segundos
-      setTimeout(() => {
-        setShowNotification(false);
-      }, 3000);
-    }
-  }, [openNotification]);
 
   return (
     <div
