@@ -28,6 +28,7 @@ function CartDetail() {
       <div className="flex justify-between items-center p-6 w-[350px] h-[68px]">
 
         <h2 className="font-medium text-xl">My Order</h2>
+        <h2 className="font-medium text-xl">$ {context.totalCart}</h2>
         <button onClick={() => context.closeCart()}>
           <svg
             xmlns="http://www.w3.org/2000/svg"

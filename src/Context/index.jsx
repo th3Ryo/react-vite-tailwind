@@ -26,6 +26,7 @@ export const StoreProvider = ({ children }) => {
 
 
   //shoppint cart - total final
+  const [totalCart, setTotalCart] = useState(0);
   /**
    * ! pendiente de verificar mas sencillo
    *  const [totalPrice, setTotalPrice] = useState(0);
@@ -65,7 +66,8 @@ export const StoreProvider = ({ children }) => {
     closeCart,
     showNotification,
     setShowNotification,
-    /* totalPrice, */
+    totalCart,
+    setTotalCart,
   }}>
     {children}
   </StoreContext.Provider>;

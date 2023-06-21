@@ -26,7 +26,8 @@ function Card({ID, title, description, price, category, image }) {
     // Realizar acciones adicionales al hacer clic en el botón
     /* valor que sirve para almacenar datos y usarlo en cartDetail o cualquier otra*/
     context.setDetailData(newItem); 
-
+    context.setTotalCart(context.totalCart+newItem.price); 
+    
 
     // actualizar estado de add to cart
     /* context.setAddToCart([...context.addToCart, newItem]); */
