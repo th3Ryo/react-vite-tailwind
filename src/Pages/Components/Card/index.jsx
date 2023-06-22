@@ -31,8 +31,9 @@ function Card({ID, title, description, price, category, image }) {
 
     // actualizar estado de add to cart
     /* context.setAddToCart([...context.addToCart, newItem]); */
-    // Verificar si el producto ya existe en el carrito
     
+    
+    // Verificar si el producto ya existe en el carrito
     const existingItemIndex = context.addToCart.findIndex(
       (item) => item.id === newItem.id
     );

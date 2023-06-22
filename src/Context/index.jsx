@@ -27,18 +27,13 @@ export const StoreProvider = ({ children }) => {
 
   //shoppint cart - total final
   const [totalCart, setTotalCart] = useState(0);
-  /**
-   * ! pendiente de verificar mas sencillo
-   *  const [totalPrice, setTotalPrice] = useState(0);
-  useEffect(() => {
-    // Calcula el precio total
-    const total = context.addToCart.reduce((accumulator, item) => {
-      return accumulator + (item.price * item.quantity);
-    }, 0);
-    
-    // Actualiza el precio total
-    setTotalPrice(total);
-  }, [context.addToCart]); */
+ 
+
+    //shoppint cart - order
+    const [order, setOrder] = useState([]);
+  
+
+
   
   //shoppint cart - add Product to cart
   const [addToCart, setAddToCart] = useState([]); // Estado para mostrar el detail el false es para que por defecto este vacio
@@ -68,6 +63,8 @@ export const StoreProvider = ({ children }) => {
     setShowNotification,
     totalCart,
     setTotalCart,
+    order, 
+    setOrder
   }}>
     {children}
   </StoreContext.Provider>;
