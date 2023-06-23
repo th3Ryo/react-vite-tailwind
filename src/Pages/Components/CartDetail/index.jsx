@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 import { useContext } from "react";
 import { StoreContext } from "../../../Context";
 import { MyOrderCard } from "../MyOrderCard";
@@ -35,7 +36,7 @@ function CartDetail() {
       totalPrice: context.totalCart,
     };
     //agregar order al hook serOrders
-    console.log("orderToAdd: ", orderToAdd);
+    // console de verificacion console.log("orderToAdd: ", orderToAdd);
     context.setOrder([...context.order, orderToAdd]);
     //se vacia el carrito despues del voton
     context.setAddToCart([]);
@@ -84,14 +85,19 @@ function CartDetail() {
           {/* console de verificacion {console.log("addToCart ",context.addToCart)} */}
         </MyOrderCard>
       ))}
+          
       {context.addToCart?.length > 0 && (
-        /* mt-auto para enviar al final el button siempre en clase usaban otro metodo era flex-1 */
-        <button
-          className="w-[300px] rounded-lg py-3 bg-gradient-to-l from-red-800 to-orange-400 text-white mt-auto mb-2"
-          onClick={() => handleButtonCheckout()}
-        >
-          Checkout
-        </button>
+        <Link to="my-orders/last">
+          {/* mt-auto para enviar al final el button siempre en clase usaban otro
+          metodo era flex-1 */}
+          <button
+          
+            className="w-[300px] rounded-lg py-3 bg-gradient-to-l from-red-800 to-orange-400 text-white mt-auto mb-2"
+            onClick={() => handleButtonCheckout()}
+          >
+            Checkout
+          </button>
+        </Link>
       )}
     </aside>
   );
