@@ -29,8 +29,10 @@ function CartDetail() {
   };
 
   const handleButtonCheckout = () => {
+    const date = new Date();
+
     const orderToAdd = {
-      Date: "01.02.23",
+      Date: date.toLocaleDateString(),
       product: context.addToCart,
       totalProduct: context.addToCart.length,
       totalPrice: context.totalCart,
