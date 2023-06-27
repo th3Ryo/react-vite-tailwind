@@ -30,13 +30,16 @@ function CartDetail() {
 
   const handleButtonCheckout = () => {
     const date = new Date();
-
+    console
     const orderToAdd = {
       Date: date.toLocaleDateString(),
+      /* Date: date.toLocaleString(), con minutos y segundos*/
       product: context.addToCart,
       totalProduct: context.addToCart.length,
       totalPrice: context.totalCart,
     };
+    console.log("date " , orderToAdd.Date);
+
     //agregar order al hook serOrders
     // console de verificacion console.log("orderToAdd: ", orderToAdd);
     context.setOrder([...context.order, orderToAdd]);

@@ -7,6 +7,11 @@ import { StoreContext } from "../../Context";
 
 function MyOrder() {
   const context = useContext(StoreContext);
+  const currentPath = window.location.pathname
+  let index = currentPath.substring(currentPath.lastIndexOf('/') + 1)
+  /* console.log(index); verificar que solo toma despues del /*/
+  if (index === "last") index = context.order?.length - 1 
+
   return (
     <Layout>
       <div className="flex items-center justify-center relative w-80">
@@ -29,9 +34,9 @@ function MyOrder() {
           </span>
         </Link>
       </div>
-      {/* verificacion que order exista */}
-      {context.order.length > 0 &&
-        context.order.slice(-1)[0].product.map((item) => (
+      {/* verificacion que order exista context.order.length > 0 &&*/}
+      {
+        context.order?.[index]?.product.map((item) => (
           <MyOrderCard
             key={item.id}
             id={item.id}
