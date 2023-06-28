@@ -17,13 +17,12 @@ export const StoreProvider = ({ children }) => {
   };
 
   //buscar textos en card 
-  const [searchByTitle, setSearchByTitle] = useState(null);
+  const [searchByTitle, setSearchByTitle] = useState("");
   console.log("searchByTitle ", searchByTitle); // Muestra el valor actual del campo de búsqueda
+  //muestra items
+  const [filteredItems, setFilteredItems] = useState(null);
 
-  const filteredItemBytitle = (items) => {
-    return items
-  }
-  
+
 
   /* const toggleDetail = () =>  {
     setIsDetailOpen(!isDetailOpen)
@@ -47,8 +46,6 @@ export const StoreProvider = ({ children }) => {
     //shoppint cart - order
     const [order, setOrder] = useState([]);
   
-
-
   
   //shoppint cart - add Product to cart
   const [addToCart, setAddToCart] = useState([]); // Estado para mostrar el detail el false es para que por defecto este vacio
@@ -57,11 +54,10 @@ export const StoreProvider = ({ children }) => {
   const openCart = () => setIsCartOpen(true);
   const closeCart  = () => setIsCartOpen(false);
   
-
   
   //detail card - almacenar datos del click  
   const [detailData, setDetailData] = useState({});
-  
+
   const [isDetailOpen, setIsDetailOpen] = useState(false); // Estado para mostrar el detail el false es para que por defecto este vacio
   
   //

@@ -9,8 +9,13 @@ import { Card } from "../Components/Card";
 
 const Home = () => {
   const { items, error, isLoading } = useFetch("getAllItem");
-  //contexto para treaer la funcion que captura texto 
-  const { handleSearch } = useContext(StoreContext);
+  //contexto para treaer la funcion que captura texto
+  const { handleSearch, searchByTitle } = useContext(StoreContext);
+
+  // Filtra los elementos basados en el valor de searchByTitle
+  const filteredItems = items?.filter((item) =>
+    item.title.toLowerCase().includes(searchByTitle?.toLowerCase())
+  );
 
   return (
     <Layout>
@@ -23,13 +28,14 @@ const Home = () => {
         placeholder="Search a product"
         onChange={handleSearch}
       />
+      {filteredItems?.length === 0 && <p>No Results Found</p>}
       {isLoading ? (
-        <p>Loading...</p>
+        <p>Cargando...</p>
       ) : error ? (
         <p>Error: {error}</p>
       ) : (
         <div className="grid gap-6 grid-cols-4 w-full max-w-screen-lg">
-          {items?.map((item) => (
+          {filteredItems?.map((item) => (
             <Card
               key={item.id}
               ID={item.id}
