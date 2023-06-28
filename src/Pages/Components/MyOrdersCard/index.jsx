@@ -7,7 +7,7 @@ const MyOrdersCard = (props) => {
   return (
     <div className="flex justify-between items-center w-full p-2 m-2 bg-gradient-to-l from-red-800 to-orange-400 text-white border rounded-lg">
       <div className="flex flex-col space-x-4">
-        <div className="flex flex-row justify-center space-x-4 pb-2 w-[220px]">
+        <p className="flex flex-row justify-center space-x-4 pb-2 w-[220px]">
           <svg
             width="20"
             height="20"
@@ -28,9 +28,9 @@ const MyOrdersCard = (props) => {
           </svg>
 
           <span> {dataProduct}</span>
-        </div>
+        </p>
         <div className="flex flex-row justify-evenly items-center w-full">
-          <div className="flex flex-col items-center">
+          <p className="flex flex-col items-center">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               width="20"
@@ -46,14 +46,14 @@ const MyOrdersCard = (props) => {
             </svg>
 
             <span>Product: {totalProduct}</span>
-          </div>
-          <div className="flex flex-col items-center">
+          </p>
+          <p className="flex flex-col items-center">
             <span className="font-medium text-xs">Total: </span>
 
             <span className="font-medium text-xl ">
               {totalPrice}
             </span>
-          </div>
+          </p>
         </div>
       </div>
       <div className="flex items-center justify-center h-full ">

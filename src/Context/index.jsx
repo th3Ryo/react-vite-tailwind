@@ -6,13 +6,28 @@ export const StoreContext = createContext({});
 
 //shoppint cart
 export const StoreProvider = ({ children }) => {
-  //shoppint cart - contador  
   //detail card - open close  
   const openDetail = (data) => setIsDetailOpen(true);
   const closeDetail  = () => setIsDetailOpen(false);
-  const toggleDetail = () =>  {
-    setIsDetailOpen(!isDetailOpen)
+  //funcion captura textos de input 
+  const handleSearch = (event) => {
+    const searchValue = event.target.value;
+    //console.log(searchValue); // Muestra el valor actual del campo de búsqueda
+    setSearchByTitle(searchValue);
+  };
+
+  //buscar textos en card 
+  const [searchByTitle, setSearchByTitle] = useState(null);
+  console.log("searchByTitle ", searchByTitle); // Muestra el valor actual del campo de búsqueda
+
+  const filteredItemBytitle = (items) => {
+    return items
   }
+  
+
+  /* const toggleDetail = () =>  {
+    setIsDetailOpen(!isDetailOpen)
+  } */
   //notificacion de adicion
   const [showNotification, setShowNotification] = useState(false); // Agregar el estado para controlar la notificación
   useEffect(() => {
@@ -42,12 +57,15 @@ export const StoreProvider = ({ children }) => {
   const openCart = () => setIsCartOpen(true);
   const closeCart  = () => setIsCartOpen(false);
   
+
   
   //detail card - almacenar datos del click  
   const [detailData, setDetailData] = useState({});
   
   const [isDetailOpen, setIsDetailOpen] = useState(false); // Estado para mostrar el detail el false es para que por defecto este vacio
   
+  //
+
   return <StoreContext.Provider value={{
     isDetailOpen,
     openDetail,
@@ -64,7 +82,10 @@ export const StoreProvider = ({ children }) => {
     totalCart,
     setTotalCart,
     order, 
-    setOrder
+    setOrder,
+    handleSearch,
+    searchByTitle,
+    setSearchByTitle,
   }}>
     {children}
   </StoreContext.Provider>;

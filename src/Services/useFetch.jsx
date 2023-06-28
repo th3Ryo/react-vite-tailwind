@@ -6,6 +6,7 @@ const useFetch = (endpointKey) => {
   const [items, setItems] = useState(null); // Estado para almacenar los elementos
   const [error, setError] = useState(null); // Estado para almacenar el error, si ocurre
   const [isLoading, setIsLoading] = useState(false); // Estado para controlar si la solicitud está en curso
+  const [searchByTitle, setSearchByTitle] = useState(false); // Estado para controlar si la solicitud está en curso
 
   useEffect(() => {
     const fetchItems = async () => {

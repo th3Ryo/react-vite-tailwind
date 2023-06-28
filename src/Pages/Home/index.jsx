@@ -1,38 +1,49 @@
-import React from 'react'
-import {useFetch} from '../../Services/useFetch'
-import { endPoints } from '../../Services/endPoints'
-import {Card} from '../Components/Card'
+import React from "react";
+import { useContext } from "react";
+import { StoreContext } from "../../Context";
+import { useFetch } from "../../Services/useFetch";
+import { Layout } from "../Components/Layout";
+import { Card } from "../Components/Card";
 
 //siempre que se piense en consumir informacion en este caso de la api se debe tener el useEffect
 
 const Home = () => {
   const { items, error, isLoading } = useFetch("getAllItem");
-  
+  //contexto para treaer la funcion que captura texto 
+  const { handleSearch } = useContext(StoreContext);
 
   return (
-    <div>
-      <h1>Home</h1>
+    <Layout>
+      <div className="flex items-center justify-center w-80">
+        <h1 className="text-center mb-4">Home</h1>
+      </div>
+      <input
+        className="rounded-lg border border-black w-80 p-4 mb-4 focus:outline-none "
+        type="text"
+        placeholder="Search a product"
+        onChange={handleSearch}
+      />
       {isLoading ? (
         <p>Loading...</p>
       ) : error ? (
         <p>Error: {error}</p>
       ) : (
-        <div className='grid gap-6 grid-cols-4 w-full max-w-screen-lg'>
-          {items?.map(item => (    
-          <Card 
-            key={item.id}
-            ID={item.id}
-            title={item.title}
-            description={item.description}
-            price={item.price}
-            category={item.category}
-            image={item.image}
-          />
+        <div className="grid gap-6 grid-cols-4 w-full max-w-screen-lg">
+          {items?.map((item) => (
+            <Card
+              key={item.id}
+              ID={item.id}
+              title={item.title}
+              description={item.description}
+              price={item.price}
+              category={item.category}
+              image={item.image}
+            />
           ))}
         </div>
-        )}
-    </div>
-  )
-}
+      )}
+    </Layout>
+  );
+};
 
-export {Home}
+export { Home };
