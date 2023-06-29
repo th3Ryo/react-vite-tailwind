@@ -8,9 +8,12 @@ import { Card } from "../Components/Card";
 //siempre que se piense en consumir informacion en este caso de la api se debe tener el useEffect
 
 const Home = () => {
-  const currentPath = window.location.pathname;
-  let index = currentPath.substring(currentPath.lastIndexOf("/")+1);
-  console.log(index)
+  const context = useContext(StoreContext);
+
+
+  /* const currentPath = window.location.pathname;
+  let category = currentPath.substring(currentPath.lastIndexOf("/") + 1);
+  console.log(category); */
   /* if (index === "/") {
     index = "getAllItem";
   }
@@ -21,11 +24,21 @@ const Home = () => {
   //contexto para treaer la funcion que captura texto
   const { handleSearch, searchByTitle } = useContext(StoreContext);
 
-  // Filtra los elementos basados en el valor de searchByTitle
-  const filteredItems = items?.filter((item) =>
-    item.title.toLowerCase().includes(searchByTitle?.toLowerCase())
-  );
+  // Filtra los elementos basados en el valor de searchByTitle y la categoria
+  let category = context.selectedNavItem === "All" ? null : context.selectedNavItem;
+  let filteredItems = items;
 
+  if (category) {
+    filteredItems = items?.filter(
+      (item) =>
+        item.category.toLowerCase() === category.toLowerCase() &&
+        item.title.toLowerCase().includes(searchByTitle?.toLowerCase())
+    );
+  } else {
+    filteredItems = items?.filter((item) =>
+      item.title.toLowerCase().includes(searchByTitle?.toLowerCase())
+    );
+  }
   return (
     <Layout>
       <div className="flex items-center justify-center w-80">

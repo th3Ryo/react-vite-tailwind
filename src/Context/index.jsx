@@ -62,8 +62,8 @@ export const StoreProvider = ({ children }) => {
   const [isDetailOpen, setIsDetailOpen] = useState(false); // Estado para mostrar el detail el false es para que por defecto este vacio
   
   //estado de captegoria
-  const [selectedNavItem, setSelectedNavItem] = useState('');
-  //capturar los link del navbar
+  const [selectedNavItem, setSelectedNavItem] = useState(""); // Estado para almacenar el nombre del NavItem seleccionado
+ //capturar los link del navbar
   
   
   return <StoreContext.Provider value={{
@@ -86,7 +86,6 @@ export const StoreProvider = ({ children }) => {
     handleSearch,
     searchByTitle,
     setSearchByTitle,
-  
     selectedNavItem, 
     setSelectedNavItem,
   }}>

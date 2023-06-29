@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext , useState } from "react";
 import { StoreContext } from "../../../Context";
 
 import { navData } from "./navData";
@@ -7,9 +7,15 @@ import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
   const context = useContext(StoreContext);
+  const [selectedNavItem, setSelectedNavItem] = useState(null); // Estado para almacenar el nombre del NavItem seleccionado
+
 
   const activeStyle = "underline underline-offset-4";
   const data = navData();
+
+  const handleNavItemClick = (name) => {
+    context.setSelectedNavItem(name); // Actualiza el estado con el nombre del NavItem seleccionado
+  };
 
   /* const handleClickCategory = () => {
     const currentPath = window.location.pathname;
@@ -33,7 +39,7 @@ const Navbar = () => {
             className={className}
             navbarName={name}
             activeStyle={activeStyle}
-            /* onClick={handleClickCategory} */
+            onClick={() => handleNavItemClick(name)} // Llama a la función handleNavItemClick al hacer clic en el NavItem
           />
         ))}
       </ul>
