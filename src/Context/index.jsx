@@ -9,21 +9,22 @@ export const StoreProvider = ({ children }) => {
   //detail card - open close  
   const openDetail = (data) => setIsDetailOpen(true);
   const closeDetail  = () => setIsDetailOpen(false);
+  
+
+  //buscar textos en card 
+  const [searchByTitle, setSearchByTitle] = useState("");
+  console.log("searchByTitle ", searchByTitle); // Muestra el valor actual del campo de búsqueda
+  //muestra items
   //funcion captura textos de input 
   const handleSearch = (event) => {
     const searchValue = event.target.value;
     //console.log(searchValue); // Muestra el valor actual del campo de búsqueda
     setSearchByTitle(searchValue);
   };
+  
 
-  //buscar textos en card 
-  const [searchByTitle, setSearchByTitle] = useState("");
-  console.log("searchByTitle ", searchByTitle); // Muestra el valor actual del campo de búsqueda
-  //muestra items
-  const [filteredItems, setFilteredItems] = useState(null);
-
-
-
+  
+  
   /* const toggleDetail = () =>  {
     setIsDetailOpen(!isDetailOpen)
   } */
@@ -37,14 +38,14 @@ export const StoreProvider = ({ children }) => {
       }, 1000);
     }
   }, [showNotification]);
-
-
+  
+  
   //shoppint cart - total final
   const [totalCart, setTotalCart] = useState(0);
- 
-
-    //shoppint cart - order
-    const [order, setOrder] = useState([]);
+  
+  
+  //shoppint cart - order
+  const [order, setOrder] = useState([]);
   
   
   //shoppint cart - add Product to cart
@@ -57,11 +58,14 @@ export const StoreProvider = ({ children }) => {
   
   //detail card - almacenar datos del click  
   const [detailData, setDetailData] = useState({});
-
+  
   const [isDetailOpen, setIsDetailOpen] = useState(false); // Estado para mostrar el detail el false es para que por defecto este vacio
   
-  //
-
+  //estado de captegoria
+  const [selectedNavItem, setSelectedNavItem] = useState('');
+  //capturar los link del navbar
+  
+  
   return <StoreContext.Provider value={{
     isDetailOpen,
     openDetail,
@@ -82,6 +86,9 @@ export const StoreProvider = ({ children }) => {
     handleSearch,
     searchByTitle,
     setSearchByTitle,
+  
+    selectedNavItem, 
+    setSelectedNavItem,
   }}>
     {children}
   </StoreContext.Provider>;

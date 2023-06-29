@@ -8,7 +8,16 @@ import { Card } from "../Components/Card";
 //siempre que se piense en consumir informacion en este caso de la api se debe tener el useEffect
 
 const Home = () => {
-  const { items, error, isLoading } = useFetch("getAllItem");
+  const currentPath = window.location.pathname;
+  let index = currentPath.substring(currentPath.lastIndexOf("/")+1);
+  console.log(index)
+  /* if (index === "/") {
+    index = "getAllItem";
+  }
+  console.log(index); // Verificar que solo toma después del "/"
+  const { items, error, isLoading } = useFetch(index); */
+
+  const { items, error, isLoading } = useFetch("getAllItem"); //mientra el if
   //contexto para treaer la funcion que captura texto
   const { handleSearch, searchByTitle } = useContext(StoreContext);
 

@@ -61,9 +61,6 @@ function Card({ID, title, description, price, category, image }) {
     context.closeDetail();
     context.openCart();
     context.setShowNotification(true); // Agregar esta línea para activar la notificación
-    setTimeout(() => {
-      context.setShowNotification(false); // Ocultar la notificación después de 3 segundos
-    }, 3000);
   };
 
   return (

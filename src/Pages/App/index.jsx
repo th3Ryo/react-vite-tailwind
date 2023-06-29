@@ -19,6 +19,7 @@ const AppRoutes = () => {
   //se crea una variable para el routes con un objeto con arrays
   let routes = useRoutes ([
     { path: '/', element: <Home /> },
+    { path: '/Electronics', element: <Home /> },
     { path: '/my-account', element: <MyAccount /> },
     { path: '/MyOrder', element: <MyOrder /> },
     { path: '/my-orders', element: <MyOrders /> },
@@ -33,6 +34,7 @@ const AppRoutes = () => {
     
 
 const App = () => {
+  
   return (
   <StoreProvider>
     <BrowserRouter>
