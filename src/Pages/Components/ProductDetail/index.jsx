@@ -42,14 +42,14 @@ const ProductDetail = () => {
             />
           </div>
           <div className="flex flex-col p-3 space-y-1">
-          <p className="flex flex-col p-3">
+          <p className="flex flex-col">
             <span className="font-medium text-2xl">
               ${context.detailData.price}
             </span>
-            <span className="font-medium text-md text-white">
+            <span className="font-medium text-md text-white line-clamp-2">
               {context.detailData.title}
             </span>
-            <span className="font-medium text-md product-detail line-clamp-6">
+            <span className="font-medium text-md product-detail line-clamp-2">
               {context.detailData.description}
             </span>
             <span className="">{context.detailData.category}</span>

@@ -30,7 +30,6 @@ function CartDetail() {
 
   const handleButtonCheckout = () => {
     const date = new Date();
-    console
     const orderToAdd = {
       Date: date.toLocaleDateString(),
       /* Date: date.toLocaleString(), con minutos y segundos*/
@@ -38,7 +37,7 @@ function CartDetail() {
       totalProduct: context.addToCart.length,
       totalPrice: context.totalCart,
     };
-    console.log("date " , orderToAdd.Date);
+    //console.log("date " , orderToAdd.Date); 
 
     //agregar order al hook serOrders
     // console de verificacion console.log("orderToAdd: ", orderToAdd);
@@ -47,6 +46,7 @@ function CartDetail() {
     context.setAddToCart([]);
     //vaciar el valor creo que se podria hacer de otra forma
     context.setTotalCart(0);
+    context.setSearchByTitle('')
   };
 
   return (
