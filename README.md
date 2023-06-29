@@ -1,6 +1,6 @@
 # Deploy
 
-https://ryo-shopi.netlify.app
+netlify: https://ryo-shopi.netlify.app
 
 # E-commerce Website
 
