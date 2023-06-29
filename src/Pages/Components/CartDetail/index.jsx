@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { StoreContext } from "../../../Context";
 import { MyOrderCard } from "../MyOrderCard";
@@ -13,19 +13,22 @@ function CartDetail() {
   console.log("detail: ", context.detailData); */
   //mas eficiente para eliminar que modificar el array
   const deleteItemFromCart = (id) => {
+    // Filtrar los productos para eliminar el que tenga el ID especificado
     const filteredProducts = context.addToCart.filter(
       (product) => product.id !== id
     );
     if (context.addToCart.length > 1) {
+      // Calcular el nuevo total del carrito si todavía hay productos después de eliminar
       const totalPrice = filteredProducts.reduce((total, product) => {
         return total + product.price * product.quantity;
       }, 0);
       context.setTotalCart(totalPrice);
     } else {
+      //No hay productos en el carrito después de eliminar, establecer el total en 0
       context.setTotalCart(0);
     }
 
-    context.setAddToCart(filteredProducts);
+    context.setAddToCart(filteredProducts); // Actualizar los productos en el carrito en el contexto
   };
 
   const handleButtonCheckout = () => {
@@ -37,16 +40,17 @@ function CartDetail() {
       totalProduct: context.addToCart.length,
       totalPrice: context.totalCart,
     };
-    //console.log("date " , orderToAdd.Date); 
+    //console.log("date " , orderToAdd.Date);
 
     //agregar order al hook serOrders
     // console de verificacion console.log("orderToAdd: ", orderToAdd);
-    context.setOrder([...context.order, orderToAdd]);
+    context.setOrder([...context.order, orderToAdd]); // Agregar la orden al estado de pedidos en el contexto
     //se vacia el carrito despues del voton
-    context.setAddToCart([]);
+    context.setAddToCart([]); // Vaciar el carrito
     //vaciar el valor creo que se podria hacer de otra forma
-    context.setTotalCart(0);
-    context.setSearchByTitle('')
+    context.setTotalCart(0); // Establecer el total del carrito en 0
+    context.setSearchByTitle(''); // Borrar el valor de búsqueda por título
+    context.closeCart(); // Cerrar el carrito en el contexto
   };
 
   return (
@@ -90,13 +94,12 @@ function CartDetail() {
           {/* console de verificacion {console.log("addToCart ",context.addToCart)} */}
         </MyOrderCard>
       ))}
-          
+
       {context.addToCart?.length > 0 && (
         <Link to="my-orders/last">
           {/* mt-auto para enviar al final el button siempre en clase usaban otro
           metodo era flex-1 */}
           <button
-          
             className="w-[300px] rounded-lg py-3 bg-gradient-to-l from-red-800 to-orange-400 text-white mt-auto mb-2"
             onClick={() => handleButtonCheckout()}
           >

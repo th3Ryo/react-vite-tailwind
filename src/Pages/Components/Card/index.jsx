@@ -2,7 +2,7 @@ import React from "react";
 import { useContext } from "react";
 import { StoreContext } from "../../../Context";
 
-function Card({ID, title, description, price, category, image }) {
+function Card({ ID, title, description, price, category, image }) {
   const context = useContext(StoreContext);
 
   const newItem = {
@@ -16,28 +16,26 @@ function Card({ID, title, description, price, category, image }) {
   };
 
   const handleCardClick = (productDetail) => {
-    context.openDetail();
-    context.setDetailData(newItem);
-    context.closeCart();
+    context.openDetail(); // Abre el detalle del producto en el contexto
+    context.setDetailData(newItem); // Establece los datos del producto en el contexto
+    context.closeCart(); // Cierra el carrito en el contexto
   };
 
   const handleButtonClick = (event) => {
-    event.stopPropagation(); // Detener la propagación del evento
+    event.stopPropagation(); // Detiene la propagación del evento
     // Realizar acciones adicionales al hacer clic en el botón
     /* valor que sirve para almacenar datos y usarlo en cartDetail o cualquier otra*/
-    context.setDetailData(newItem); 
-    context.setTotalCart(context.totalCart+newItem.price); 
-    
+    context.setDetailData(newItem); // Establece los datos del producto en el contexto
+    context.setTotalCart(context.totalCart + newItem.price); // Actualiza el total del carrito sumando el precio del nuevo producto
 
     // actualizar estado de add to cart
     /* context.setAddToCart([...context.addToCart, newItem]); */
-    
-    
+
     // Verificar si el producto ya existe en el carrito
     const existingItemIndex = context.addToCart.findIndex(
       (item) => item.id === newItem.id
     );
-      /* console.log("item.id ", item.id);
+    /* console.log("item.id ", item.id);
       console.log("newItem.id ", newItem.id); 
       console.log("existingItemIndex ", existingItemIndex);*/
     if (existingItemIndex !== -1) {
@@ -51,16 +49,10 @@ function Card({ID, title, description, price, category, image }) {
       context.setAddToCart([...context.addToCart, newItem]);
     }
 
-    
-    
-    
-    
-
-
     // abrir el add to cart
-    context.closeDetail();
-    context.openCart();
-    context.setShowNotification(true); // Agregar esta línea para activar la notificación
+    context.closeDetail(); // Cierra el detalle del producto en el contexto
+    context.openCart(); // Abre el carrito en el contexto
+    context.setShowNotification(true); // Muestra la notificación en el contexto
   };
 
   return (
@@ -99,7 +91,9 @@ function Card({ID, title, description, price, category, image }) {
             </button>
           </figure>
           <p className="flex justify-between w-full h-1/5 items-center">
-            <span className="text-xs font-light mr-2 line-clamp-2">{title}</span>
+            <span className="text-xs font-light mr-2 line-clamp-2">
+              {title}
+            </span>
             <span className="text-lg">${price}</span>
           </p>
         </div>

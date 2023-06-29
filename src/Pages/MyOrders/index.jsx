@@ -11,9 +11,7 @@ function MyOrders() {
 
   return (
     <Layout>
-      <div className="flex items-center justify-center w-80">
-        <h1 className="text-center mb-4">My Orders</h1>
-      </div>
+            <div className="flex flex-col-reverse">
 
       {context.order.map((order, index) => (
         <Link key={index} to={`/my-orders/${index}`}>
@@ -23,9 +21,13 @@ function MyOrders() {
             dataProduct={order.Date}
             totalProduct={order.totalProduct}
             totalPrice={order.totalPrice}
-          />
+            />
         </Link>
       ))}
+      <div className="flex items-center justify-center w-80">
+        <h1 className="text-center mb-4">My Orders</h1>
+      </div>
+      </div>
     </Layout>
   );
 }

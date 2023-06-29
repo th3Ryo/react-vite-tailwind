@@ -17,7 +17,7 @@ const useFetch = (endpointKey) => {
           throw new Error("Request failed"); // Si la respuesta no es exitosa, lanzar un error
         }
         const jsonItems = await response.json(); // Convertir la respuesta en formato JSON
-        console.log("jsonItems ",jsonItems);
+        //console.log("jsonItems ",jsonItems);//verificacion de objetos
         setItems(jsonItems); // Actualizar el estado con los elementos obtenidos
       } catch (error) {
         setError(error.message); // Si ocurre un error, almacenarlo en el estado de error

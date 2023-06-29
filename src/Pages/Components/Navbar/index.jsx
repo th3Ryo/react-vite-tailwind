@@ -1,4 +1,4 @@
-import React, { useContext , useState } from "react";
+import React, { useContext, useState } from "react";
 import { StoreContext } from "../../../Context";
 
 import { navData } from "./navData";
@@ -6,15 +6,19 @@ import { NavItem } from "./NavItem";
 import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
-  const context = useContext(StoreContext);
-  const [selectedNavItem, setSelectedNavItem] = useState(null); // Estado para almacenar el nombre del NavItem seleccionado
+  const context = useContext(StoreContext); // Obtener el contexto StoreContext
 
+  const activeStyle = "underline underline-offset-4"; // Estilo para resaltar el elemento de navegación activo
 
-  const activeStyle = "underline underline-offset-4";
-  const data = navData();
+  const data = navData(); // Obtener los datos de navegación (presumiblemente una función que devuelve los datos)
 
   const handleNavItemClick = (name) => {
-    context.setSelectedNavItem(name); // Actualiza el estado con el nombre del NavItem seleccionado
+    if (name === `🛒${context.addToCart.length}`) {
+      // Si el nombre del elemento de navegación es el carrito de compras
+      context.openCart(); // Abrir el carrito de compras utilizando la función openCart del contexto
+    } else {
+      context.setSelectedNavItem(name); // Establecer el nombre del elemento de navegación seleccionado utilizando la función setSelectedNavItem del contexto
+    }
   };
 
   /* const handleClickCategory = () => {
@@ -53,6 +57,7 @@ const Navbar = () => {
             className={className}
             navbarName={name}
             activeStyle={activeStyle}
+            onClick={() => handleNavItemClick(name)} // Llama a la función handleNavItemClick al hacer clic en el NavItem
           />
         ))}
       </ul>
